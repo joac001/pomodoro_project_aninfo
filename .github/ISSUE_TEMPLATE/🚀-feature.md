@@ -25,7 +25,6 @@ assignees: ''
     Please link to any relevant issues or other PRs!
 -->
 
-(Outline your motivation here)
 
 ### Implementation
 
