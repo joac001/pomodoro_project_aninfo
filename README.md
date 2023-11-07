@@ -1,3 +1,13 @@
+# Pomodoro project
+
+The Pomodoro Technique is a time management method based on 25-minute stretches of focused work broken by five-minute breaks. Longer breaks are taken after four consecutive work intervals. Each work interval is called a pomodoro, the Italian word for tomato.
+
+## Description
+
+The first thing the user will notice when starting the app is the timer. It starts with 25 minutes and, once the "beggin" button is clicked, it will start a countdown until it reaches zero. During this time frame the user is expected to be focused working on a task without interruptions. Once the timer hits 0, it will automatically begin a new countdown, this time from 5 minutes instead of 25. This time frame is meant to serve as a break period in which the user can unwind and relax for a short time. Once this "work-relax" cycle has been repeated 4 times, a new countdown begins. This time the relax period lasts for 15 minutes, which serves as a reward for having completed 4 work cycles. The app keeps track of the cycle count and what kind of break the user is supposed to take.
+A pause and a continue button have been implemented. This allows for more flexibility for the user, who can adapt to unplanned interruptions. For this same reason a restart button has been implemented which restarts the current time frame. 
+The user also has the option to write a list of tasks to better visualize what needs to be done and in which order.
+
 ## Start developing the pomodoro app with React
 
 
@@ -41,6 +51,16 @@ For building the app for production run:
 
 
 ### Your app is ready to be deployed!
+
+## Authors
+
+The following are the githubs of this app's authors:
+https://github.com/mmosan
+
+## Acknowledgements
+
+https://pomofocus.io/
+https://aninfo.nriedel.com.ar/
 
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
