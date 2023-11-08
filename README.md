@@ -50,17 +50,29 @@ For building the app for production run:
 *It correctly bundles React in production mode and optimizes the build for the best performance.*
 
 
-### Your app is ready to be deployed!
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+Your app is ready to be deployed!
+
 
 ## Authors
 
 The following are the githubs of this app's authors:
-https://github.com/mmosan
+
+https://github.com/levdevs 
+
+https://github.com/JM-Pascual 
+
+https://github.com/mmosan 
+
+https://github.com/IYuschak 
+
+https://github.com/joac001 
+
 
 ## Acknowledgements
 
 https://pomofocus.io/
+
 https://aninfo.nriedel.com.ar/
 
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
