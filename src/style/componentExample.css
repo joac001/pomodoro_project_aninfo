@@ -1,0 +1,13 @@
+.welcome-text {
+    align-self: center;
+    display: block;
+    text-align: center;
+    justify-content: center;
+
+    color: rgb(185, 185, 185);
+}
+
+.gif {
+    width: 480;
+    height: 270;
+}
