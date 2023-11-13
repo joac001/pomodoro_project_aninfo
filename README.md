@@ -85,12 +85,14 @@ https://github.com/mmosan
 
 https://github.com/IYuschak 
 
-https://github.com/joac001 
+<a href="https://github.com/joac001" target="_blank" title="joac001">
+  <img src="https://github.com/joac001.png?size=40" height="40" width="40" alt="rhulse" />
+</a>
 
 
 ## Acknowledgements
 
-https://pomofocus.io/
+[pomofocus.io](https://pomofocus.io/)
 
-https://aninfo.nriedel.com.ar/
+[Analisis de la informacion](https://aninfo.nriedel.com.ar/)
 
