@@ -80,27 +80,27 @@ The following are the githubs of this app's authors:
 <a href="https://github.com/levdevs" target="_blank" title="levdevs">
   <img src="https://github.com/levdevs.png?size=40" height="40" width="40" alt="rhulse" />
 </a>
-<p>levdevs - Alejandro Vargas</p>
+[levdevs](https://github.com/levdevs) - Alejandro Vargas
 
 <a href="https://github.com/JM-Pascual" target="_blank" title="JM-Pascual">
   <img src="https://github.com/JM-Pascual.png?size=40" height="40" width="40" alt="rhulse" />
 </a>
-<p>JM-Pascual - Juan Manuel Pascual Osorio</p>
+[JM-Pascual](https://github.com/JM-Pascual) - Juan Manuel Pascual Osorio
 
 <a href="https://github.com/mmosan" target="_blank" title="mmosan">
   <img src="https://github.com/mmosan.png?size=40" height="40" width="40" alt="rhulse" />
 </a>
-<p>mmosan - Martín Osan</p>
+[mmosan](https://github.com/mmosan) - Martín Osan
  
 <a href="https://github.com/IYuschak" target="_blank" title="IYuschak">
   <img src="https://github.com/IYuschak.png?size=40" height="40" width="40" alt="rhulse" />
 </a>
-<p>IYuschak - Ignacio Yuschak</p>
+[IYuschak](https://github.com/IYuschak) - Ignacio Yuschak
 
 <a href="https://github.com/joac001" target="_blank" title="joac001">
   <img src="https://github.com/joac001.png?size=40" height="40" width="40" alt="rhulse" />
 </a>
-<p>joac001 - Joaquin Ordoñez</p>
+[joac001](https://github.com/joac001) - Joaquín Ordoñez
 
 
 ## Acknowledgements
