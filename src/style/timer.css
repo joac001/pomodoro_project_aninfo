@@ -1,0 +1,25 @@
+.timer-container {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 200px;
+  }
+  
+  .timer-mode {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .timer-time {
+    font-size: 36px;
+    margin: 10px 0;
+  }
+  
+  .timer-buttons button {
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
