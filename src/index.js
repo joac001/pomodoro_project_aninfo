@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-import "./components/componentExample";
+import ReactDOM from 'react-dom';
 
 import './style/index.css';
 import ComponentExample from './components/componentExample';
+import Timer from './components/timer'; // Adjust the import path
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <ComponentExample />
+    <div>
+      <Timer timer={{ pomodoro: 25 }} />
+    </div>
   </React.StrictMode>
 );
