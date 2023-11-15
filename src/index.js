@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div>
-      <Timer timer={{ pomodoro: 1 }} />
+      <Timer timer={{ pomodoro: 25 }} />
     </div>
   </React.StrictMode>
 );
