@@ -16,6 +16,12 @@ class Timer extends Component {
       this.timerInterval = null;
     }
   
+    stopTimer = () => {
+        clearInterval(this.timerInterval);
+        this.setState({ isRunning: false });
+    };
+
+
     startTimer = () => {
       if (this.state.isRunning) return; //Locks the user for pressing start multiple times
 
@@ -26,7 +32,12 @@ class Timer extends Component {
           time: prevState.time - 1,
         }));
 
-      }, 1000);
+        if (this.state.time <= 0) {
+            this.stopTimer(); // Stop the timer when time reaches 0
+            this.setState({ time: 0 })
+        }
+
+        }, 1000);
     };
   
     render() {
