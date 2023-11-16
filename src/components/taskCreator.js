@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function TaskCreator({createTask}) {
     // useState allows updates to the value of the input
-    // and gets stored in the taskTitle variable
+    // taskTitle variable is updated via setTaskTitle function
     const [taskTitle, setTaskTitle] = useState("");
 
     // handleSubmit is a function that gets called everytime the form is submitted
@@ -12,11 +12,17 @@ export default function TaskCreator({createTask}) {
     function handleSubmit(e) {
         e.preventDefault();
         createTask(taskTitle);
+        setTaskTitle("");
     }
 
+    // upon changing, the value of the input gets stored in taskTitle with setTaskTitle
     return (
         <form onSubmit={handleSubmit}>
-            <input id="task-name" placeholder="Enter a task name..." onChange={(e) => setTaskTitle(e.target.value)}/>
+            <input 
+                id="task-name" 
+                placeholder="Enter a task name..." 
+                onChange={(e) => setTaskTitle(e.target.value)} 
+                value={taskTitle}/>
             <button id="add-task">Add Task</button>
         </form>
     );
