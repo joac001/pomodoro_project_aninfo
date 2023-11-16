@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import "./components/componentExample";
-
 import './style/index.css';
-import ComponentExample from './components/componentExample';
+import './style/tasks.css';
+import TaskContainer from './components/taskContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ComponentExample />
+    <TaskContainer/>
   </React.StrictMode>
 );
