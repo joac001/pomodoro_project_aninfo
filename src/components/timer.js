@@ -39,6 +39,15 @@ class Timer extends Component {
 
         }, 1000);
     };
+
+    restartTimer = () => {
+
+      this.stopTimer();
+      this.setState({
+        time: this.props.timer.pomodoro * 60,
+        isRunning: false,
+      });
+    };
   
     render() {
       const { mode, time } = this.state;
@@ -55,6 +64,9 @@ class Timer extends Component {
             }
             { 
             <button onClick={this.stopTimer}>Pause</button>
+            }
+            { 
+            <button onClick={this.restartTimer}>Restart</button>
             }
           </div>
         </div>
