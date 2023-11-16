@@ -53,6 +53,9 @@ class Timer extends Component {
             { 
             <button onClick={this.startTimer}>Start</button>
             }
+            { 
+            <button onClick={this.stopTimer}>Pausew</button>
+            }
           </div>
         </div>
       );
