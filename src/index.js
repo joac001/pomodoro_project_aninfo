@@ -10,9 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <div>
-      <Timer timer={{ pomodoro: 25 }} />
-    </div>
+
+    <Timer timer={{ pomodoro: 25 }} />
+    <hr />
     <TaskContainer />
+
   </React.StrictMode>
 );

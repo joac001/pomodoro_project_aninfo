@@ -17,7 +17,7 @@ export default function TaskCreator({ createTask }) {
 
     // upon changing, the value of the input gets stored in taskTitle with setTaskTitle
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="task-form">
 
             <input
                 type="text"
@@ -33,6 +33,7 @@ export default function TaskCreator({ createTask }) {
                     add
                 </span>
             </button>
+
         </form>
     );
 }

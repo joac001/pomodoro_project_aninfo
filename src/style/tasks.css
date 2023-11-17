@@ -1,13 +1,26 @@
-.btn-add {
-    margin: 5px;
+.task-form {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-columns: 200px 100px;
+
+    margin: 5px 0px 20px 0px;
 }
 
-.material-symbols-outlined {
-    margin: inherit;
+.btn-add {
+    margin: 5px;
+
+    height: 50px;
+}
+
+.btn-add span {
+    margin: 5px;
 }
 
 #task-name {
     width: 200px;
+    height: 50px;
 }
 
 .no-task-added {
