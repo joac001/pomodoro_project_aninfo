@@ -1,0 +1,12 @@
+#task-container {
+    background: #303030; 
+    color: #fff;
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column;
+    width: 25vw;
+}
+
+/* #task-container > * {
+    display: flex;
+} */
