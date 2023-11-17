@@ -13,6 +13,6 @@ root.render(
     <div>
       <Timer timer={{ pomodoro: 25 }} />
     </div>
-    <TaskContainer/>
+    <TaskContainer />
   </React.StrictMode>
 );

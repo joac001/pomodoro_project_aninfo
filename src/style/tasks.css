@@ -1,12 +1,21 @@
-#task-container {
-    background: #303030; 
-    color: #fff;
-    padding: 20px; 
-    display: flex; 
-    flex-direction: column;
-    width: 25vw;
+.btn-add {
+    margin: 5px;
 }
 
-/* #task-container > * {
-    display: flex;
-} */
+.material-symbols-outlined {
+    margin: inherit;
+}
+
+#task-name {
+    width: 200px;
+}
+
+.no-task-added {
+    color: grey;
+    font-style: italic;
+}
+
+.task-item {
+    color: white;
+    border: 2px solid rgb(59, 59, 59);
+}
