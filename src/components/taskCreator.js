@@ -1,7 +1,7 @@
 import TaskList from "./taskList";
 import { useState } from "react";
 
-export default function TaskCreator({createTask}) {
+export default function TaskCreator({ createTask }) {
     // useState allows updates to the value of the input
     // taskTitle variable is updated via setTaskTitle function
     const [taskTitle, setTaskTitle] = useState("");
@@ -17,13 +17,23 @@ export default function TaskCreator({createTask}) {
 
     // upon changing, the value of the input gets stored in taskTitle with setTaskTitle
     return (
-        <form onSubmit={handleSubmit}>
-            <input 
-                id="task-name" 
-                placeholder="Enter a task name..." 
-                onChange={(e) => setTaskTitle(e.target.value)} 
-                value={taskTitle}/>
-            <button id="add-task">Add Task</button>
+        <form onSubmit={handleSubmit} className="task-form">
+
+            <input
+                type="text"
+                className="form-control"
+
+                id="task-name"
+                placeholder="Enter a task name..."
+                onChange={(e) => setTaskTitle(e.target.value)}
+                value={taskTitle} />
+
+            <button class="btn btn-secondary btn-add" id="add-task">
+                <span class="material-symbols-outlined" id="inputGroup-sizing-default">
+                    add
+                </span>
+            </button>
+
         </form>
     );
 }

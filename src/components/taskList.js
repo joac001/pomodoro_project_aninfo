@@ -1,8 +1,8 @@
-export default function TaskList({tasks}) {
+export default function TaskList({ tasks }) {
     // initial state of taskList component with no tasks to display
     if (tasks.length == 0) {
         return <div id="task-list">
-            <p>No tasks added</p>
+            <p className="no-task-added">No tasks added</p>
         </div>
     }
 
@@ -11,7 +11,7 @@ export default function TaskList({tasks}) {
     return (
         <div id="task-list">
             {tasks.map((task) => (
-                <p key={task.id} id="task-item">{task.title}</p>
+                <p key={task.id} className="task-item" id="task-item">{task.title}</p>
             ))}
         </div>
     );

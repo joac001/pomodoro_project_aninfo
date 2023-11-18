@@ -3,6 +3,8 @@ import TaskList from "./taskList";
 // import {tasks as data} from "./tasks"
 import { useState, useEffect } from "react";
 
+import "../style/tasks.css"
+
 export default function TaskContainer() {
     // useState allows updates to the tasks array via setTasks
     // the array holds all the added tasks of the current session, starts as empty array
@@ -29,7 +31,7 @@ export default function TaskContainer() {
     // the createTask function gets passed to TaskCreator to receive the taskTitle from the input
     // stored tasks are sent to tasklist to be displayed
     return <div id="task-container">
-        <TaskCreator createTask={createTask}/>
-        <TaskList tasks={tasks}/>
+        <TaskCreator createTask={createTask} />
+        <TaskList tasks={tasks} />
     </div>;
 }

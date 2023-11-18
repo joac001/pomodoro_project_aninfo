@@ -1,12 +1,34 @@
-#task-container {
-    background: #303030; 
-    color: #fff;
-    padding: 20px; 
-    display: flex; 
-    flex-direction: column;
-    width: 25vw;
+.task-form {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-columns: 200px 100px;
+
+    margin: 5px 0px 20px 0px;
 }
 
-/* #task-container > * {
-    display: flex;
-} */
+.btn-add {
+    margin: 5px;
+
+    height: 50px;
+}
+
+.btn-add span {
+    margin: 5px;
+}
+
+#task-name {
+    width: 200px;
+    height: 50px;
+}
+
+.no-task-added {
+    color: grey;
+    font-style: italic;
+}
+
+.task-item {
+    color: white;
+    border: 2px solid rgb(59, 59, 59);
+}
