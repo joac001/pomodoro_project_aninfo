@@ -11,7 +11,9 @@ export default function TaskCreator({ createTask }) {
     // createTask function definition is on taskContainer component
     function handleSubmit(e) {
         e.preventDefault();
-        createTask(taskTitle);
+
+        if (taskTitle.trim().length != 0) createTask(taskTitle);
+        
         setTaskTitle("");
     }
 
