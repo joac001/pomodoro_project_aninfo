@@ -1,3 +1,5 @@
+import TaskCard from "./taskCard";
+
 export default function TaskList({ tasks }) {
     // initial state of taskList component with no tasks to display
     if (tasks.length == 0) {
@@ -11,7 +13,7 @@ export default function TaskList({ tasks }) {
     return (
         <div id="task-list">
             {tasks.map((task) => (
-                <p key={task.id} className="task-item" id="task-item">{task.title}</p>
+                <TaskCard key={task.id} title={task.title} />
             ))}
         </div>
     );

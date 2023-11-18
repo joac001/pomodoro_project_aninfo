@@ -61,21 +61,21 @@ class Timer extends Component {
         <div className="timer-buttons">
           {
             <button onClick={this.startTimer} type="button" className="btn btn-light">
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 play_arrow
               </span>
             </button>
           }
           {
             <button onClick={this.stopTimer} type="button" className="btn btn-light">
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 pause
               </span>
             </button>
           }
           {
             <button onClick={this.restartTimer} type="button" className="btn btn-light">
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 replay
               </span>
             </button>
