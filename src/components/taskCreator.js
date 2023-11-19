@@ -28,8 +28,8 @@ export default function TaskCreator({ createTask }) {
                 onChange={(e) => setTaskTitle(e.target.value)}
                 value={taskTitle} />
 
-            <button class="btn btn-secondary btn-add" id="add-task">
-                <span class="material-symbols-outlined" id="inputGroup-sizing-default">
+            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length == 0}>
+                <span className="material-symbols-outlined" id="inputGroup-sizing-default">
                     add
                 </span>
             </button>
