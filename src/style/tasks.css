@@ -32,3 +32,17 @@
     color: white;
     border: 2px solid rgb(59, 59, 59);
 }
+
+.form-check-label {
+    color: white;
+}
+
+.form-check-input:checked {
+    border-color: green;
+    background-color: green;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: darkgray;
+    text-decoration: line-through;
+}
