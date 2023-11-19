@@ -11,9 +11,7 @@ export default function TaskCreator({ createTask }) {
     // createTask function definition is on taskContainer component
     function handleSubmit(e) {
         e.preventDefault();
-
-        if (taskTitle.trim().length != 0) createTask(taskTitle);
-        
+        createTask(taskTitle);
         setTaskTitle("");
     }
 
@@ -30,7 +28,7 @@ export default function TaskCreator({ createTask }) {
                 onChange={(e) => setTaskTitle(e.target.value)}
                 value={taskTitle} />
 
-            <button className="btn btn-secondary btn-add" id="add-task">
+            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length == 0}>
                 <span className="material-symbols-outlined" id="inputGroup-sizing-default">
                     add
                 </span>
