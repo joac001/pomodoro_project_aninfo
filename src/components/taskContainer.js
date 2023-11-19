@@ -26,10 +26,22 @@ export default function TaskContainer() {
         }]);
     }
 
+    // deleteTask receives a taskId from the card the pressed button belongs to
+    // it creates a copy of the tasks array, filtering out the element with the provided id
+    // before overwriting the tasks array, it reassigns the ids to avoid key conflicts
+    function deleteTask(taskId) {
+        let newTasks = tasks.filter(task => task.id != taskId);
+        for (let i = 0; i < newTasks.length; i++) {
+            newTasks[i].id = i;
+        }
+        setTasks(newTasks);
+    }
+
     // the createTask function gets passed to TaskCreator to receive the taskTitle from the input
     // stored tasks are sent to tasklist to be displayed
+    // deleteTask gets passed to every TaskCard to handle each removal
     return <div id="task-container">
         <TaskCreator createTask={createTask} />
-        <TaskList tasks={tasks} />
+        <TaskList deleteTask={deleteTask} tasks={tasks} />
     </div>;
 }
