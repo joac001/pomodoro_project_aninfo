@@ -5,11 +5,12 @@ class Timer extends Component {
   constructor(props) {
     super(props);
 
-    // Initial state
+    // Initial state with Pomodoro mode, initial Pomodoro duration, and counter
     this.state = {
       mode: 'Pomodoro',
-      time: props.timer.pomodoro * 60, // Time in seconds
+      time: props.timer.pomodoro * 60, // Time in seconds for Pomodoro
       isRunning: false,
+      pomodoroCount: 0,
     };
 
     // Interval variable for updating the timer
@@ -22,7 +23,7 @@ class Timer extends Component {
   };
 
   startTimer = () => {
-    //if (this.state.isRunning) return;
+    if (this.state.isRunning) return;
 
     this.setState({ isRunning: true });
 
@@ -33,13 +34,15 @@ class Timer extends Component {
 
       if (this.state.time <= 0) {
         this.stopTimer();
+        this.setState({ time: 0 });
 
         if (this.state.mode === 'Pomodoro') {
-          // Start the break timer after a Pomodoro session
-          this.setState({
+          // Increment the Pomodoro count after completing a Pomodoro session
+          this.setState((prevState) => ({
             mode: 'Break',
             time: this.props.timer.break * 60,
-          });
+            pomodoroCount: prevState.pomodoroCount + 1,
+          }));
           this.startTimer();
         } else {
           // Reset to Pomodoro mode after the break
@@ -47,7 +50,6 @@ class Timer extends Component {
             mode: 'Pomodoro',
             time: this.props.timer.pomodoro * 60,
           });
-          this.stopTimer();
         }
       }
     }, 1000);
@@ -63,7 +65,7 @@ class Timer extends Component {
   };
 
   render() {
-    const { mode, time } = this.state;
+    const { mode, time, pomodoroCount } = this.state;
 
     return (
       <div className="timer-container">
@@ -71,6 +73,7 @@ class Timer extends Component {
         <div className="timer-time">
           {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
         </div>
+        <div className="pomodoro-counter">Pomodoros completed: {pomodoroCount}</div>
         <div className="timer-buttons">
           <button onClick={this.startTimer} type="button" className="btn btn-light">
             <span className="material-symbols-outlined">play_arrow</span>
