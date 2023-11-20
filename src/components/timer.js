@@ -8,11 +8,11 @@ class Timer extends Component {
     // Initial state
     this.state = {
       mode: 'Pomodoro',
-      time: props.timer.pomodoro * 60, //Time in in seconds
+      time: props.timer.pomodoro * 60, // Time in seconds
       isRunning: false,
     };
 
-    //Interval variable for updating the timer
+    // Interval variable for updating the timer
     this.timerInterval = null;
   }
 
@@ -21,9 +21,8 @@ class Timer extends Component {
     this.setState({ isRunning: false });
   };
 
-
   startTimer = () => {
-    if (this.state.isRunning) return; //Locks the user for pressing start multiple times
+    //if (this.state.isRunning) return;
 
     this.setState({ isRunning: true });
 
@@ -33,17 +32,31 @@ class Timer extends Component {
       }));
 
       if (this.state.time <= 0) {
-        this.stopTimer(); // Stop the timer when time reaches 0
-        this.setState({ time: 0 })
-      }
+        this.stopTimer();
 
+        if (this.state.mode === 'Pomodoro') {
+          // Start the break timer after a Pomodoro session
+          this.setState({
+            mode: 'Break',
+            time: this.props.timer.break * 60,
+          });
+          this.startTimer();
+        } else {
+          // Reset to Pomodoro mode after the break
+          this.setState({
+            mode: 'Pomodoro',
+            time: this.props.timer.pomodoro * 60,
+          });
+          this.stopTimer();
+        }
+      }
     }, 1000);
   };
 
   restartTimer = () => {
-
     this.stopTimer();
     this.setState({
+      mode: 'Pomodoro',
       time: this.props.timer.pomodoro * 60,
       isRunning: false,
     });
@@ -59,27 +72,15 @@ class Timer extends Component {
           {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
         </div>
         <div className="timer-buttons">
-          {
-            <button onClick={this.startTimer} type="button" className="btn btn-light">
-              <span className="material-symbols-outlined">
-                play_arrow
-              </span>
-            </button>
-          }
-          {
-            <button onClick={this.stopTimer} type="button" className="btn btn-light">
-              <span className="material-symbols-outlined">
-                pause
-              </span>
-            </button>
-          }
-          {
-            <button onClick={this.restartTimer} type="button" className="btn btn-light">
-              <span className="material-symbols-outlined">
-                replay
-              </span>
-            </button>
-          }
+          <button onClick={this.startTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">play_arrow</span>
+          </button>
+          <button onClick={this.stopTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">pause</span>
+          </button>
+          <button onClick={this.restartTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">replay</span>
+          </button>
         </div>
       </div>
     );
