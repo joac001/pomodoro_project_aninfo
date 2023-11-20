@@ -3,6 +3,8 @@ import TaskList from "./taskList";
 // import {tasks as data} from "./tasks"
 import { useState, useEffect } from "react";
 
+import '../style/tasks.css'
+
 export default function TaskContainer() {
     // useState allows updates to the tasks array via setTasks
     // the array holds all the added tasks of the current session, starts as empty array
