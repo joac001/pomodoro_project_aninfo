@@ -42,8 +42,10 @@ export default function TaskContainer() {
     // the createTask function gets passed to TaskCreator to receive the taskTitle from the input
     // stored tasks are sent to tasklist to be displayed
     // deleteTask gets passed to every TaskCard to handle each removal
-    return <div id="task-container">
-        <TaskCreator createTask={createTask} />
-        <TaskList deleteTask={deleteTask} tasks={tasks} />
-    </div>;
+    return (
+        <div id="task-container">
+            <TaskCreator createTask={createTask} />
+            <TaskList deleteTask={deleteTask} tasks={tasks} />
+        </div>
+    );
 }
