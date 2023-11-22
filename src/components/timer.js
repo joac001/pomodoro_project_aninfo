@@ -73,7 +73,7 @@ class Timer extends Component {
         <div className="timer-time">
           {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
         </div>
-        <div className="pomodoro-counter">Pomodoros completed: {pomodoroCount}</div>
+        <div className="pomodoro-counter">Completed pomodoros: {pomodoroCount}</div>
         <div className="timer-buttons">
           <button onClick={this.startTimer} type="button" className="btn btn-light">
             <span className="material-symbols-outlined">play_arrow</span>
