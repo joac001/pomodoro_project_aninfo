@@ -6,20 +6,33 @@
     grid-template-columns: 200px 100px;
 
     margin: 5px 0px 20px 0px;
-}
 
-.btn-add {
-    margin: 5px;
-    height: 50px;
-}
-
-.btn-add span {
-    margin: 5px;
+    user-select: none;
 }
 
 #task-name {
+    background-color: rgb(167, 167, 167);
+    border-color: rgba(255, 255, 255, 0);
+
     width: 200px;
     height: 50px;
+}
+
+#task-name:focus {
+    background-color: rgb(255, 255, 255);
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px;
+    height: 50px;
+}
+
+.btn-add:hover {
+    border: 1px solid;
 }
 
 .no-task-added {
@@ -27,23 +40,41 @@
     font-style: italic;
 }
 
-/* .task-item {
-    color: white;
-    border: 2px solid rgb(59, 59, 59);
-} */
-
-.btn-delete > span {
-    margin-top: 5px;
-}
-
 .card-body {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(46, 44, 44);
+    border: 1px solid rgb(46, 44, 44);
+    border-radius: 50px;
+
+    color: white;
+    user-select: none;
+    font-size: large;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    word-wrap: break-word;
 }
 
-.card-body > p {
-    margin: 0 10px 0 0;
-    max-width: 200px;
-    word-wrap: break-word;
+.card-body:hover {
+    border: 1px solid rgb(94, 94, 94);
+}
+
+.task-title {
+    margin: 10px;
+}
+
+.icon-delete {
+    cursor: pointer;
+
+    color: rgb(107, 107, 107);
+
+    margin: 5px 10px 5px 5px;
+}
+
+.icon-delete:hover {
+    color: rgb(223, 223, 223);
 }
