@@ -1,4 +1,3 @@
-import TaskList from "./taskList";
 import { useState } from "react";
 
 export default function TaskCreator({ createTask }) {
@@ -28,7 +27,7 @@ export default function TaskCreator({ createTask }) {
                 onChange={(e) => setTaskTitle(e.target.value)}
                 value={taskTitle} />
 
-            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length == 0}>
+            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length === 0}>
                 <span className="material-symbols-outlined" id="inputGroup-sizing-default">
                     add
                 </span>

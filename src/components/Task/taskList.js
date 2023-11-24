@@ -2,10 +2,14 @@ import TaskCard from "./taskCard";
 
 export default function TaskList({ deleteTask, tasks }) {
     // initial state of taskList component with no tasks to display
-    if (tasks.length == 0) {
-        return <div id="task-list">
-            <p className="no-task-added">No tasks added</p>
-        </div>
+    try {
+        if (tasks.length === 0) {
+            return <div id="task-list">
+                <p className="no-task-added">No tasks added</p>
+            </div>
+        }
+    } catch (e) {
+        return;
     }
 
     // the map method allows for element creation iterating on the given array
