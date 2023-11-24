@@ -8,9 +8,10 @@ export default function Timer({ pomodoroTime, breakTime }) {
   const [time, setTime] = useState(pomodoroTime * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [pomodoroCount, setPomodoroCount] = useState(0);
-
   // Interval variable for updating the timer
   const [timerInterval, setTimerInterval] = useState();
+
+
 
   function stopTimer() {
     setIsRunning(false);
@@ -20,20 +21,17 @@ export default function Timer({ pomodoroTime, breakTime }) {
   function startTimer() {
     if (isRunning) return;
     setIsRunning(true);
-    setTimerInterval(setInterval(() => {
+
+    const newInterval = setInterval(() => {
 
       setTime(time - 1);
-      console.log(time);
 
-
-      if (time === 0) {
-
+      if (time <= 0) {
         stopTimer();
-        setTime(breakTime * 60);
+        setTime(0);
 
         if (mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
-
           setMode('Break');
           setTime(breakTime * 60);
           setPomodoroCount(pomodoroCount + 1);
@@ -47,7 +45,9 @@ export default function Timer({ pomodoroTime, breakTime }) {
         }
       }
 
-    }, 1000));
+    }, 1000);
+
+    setTimerInterval(newInterval);
   }
 
   function restartTimer() {
