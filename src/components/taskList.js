@@ -1,3 +1,4 @@
+import { useState } from "react";
 import TaskCard from "./taskCard";
 
 export default function TaskList({ deleteTask, tasks }) {
@@ -12,6 +13,7 @@ export default function TaskList({ deleteTask, tasks }) {
     // key property is needed to avoid a specific compiler warning, is determined by the array's length
     return (
         <div id="task-list">
+            <p className="no-task-added">0/{ tasks.length }</p>
             {tasks.map((task) => (
                 <TaskCard deleteTask={deleteTask} key={task.id} task={task} />
             ))}
