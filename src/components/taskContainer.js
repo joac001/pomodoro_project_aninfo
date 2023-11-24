@@ -3,6 +3,8 @@ import TaskList from "./taskList";
 // import {tasks as data} from "./tasks"
 import { useState, useEffect } from "react";
 
+import '../style/tasks.css'
+
 export default function TaskContainer() {
     // useState allows updates to the tasks array via setTasks
     // the array holds all the added tasks of the current session, starts as empty array
@@ -26,10 +28,24 @@ export default function TaskContainer() {
         }]);
     }
 
+    // deleteTask receives a taskId from the card the pressed button belongs to
+    // it creates a copy of the tasks array, filtering out the element with the provided id
+    // before overwriting the tasks array, it reassigns the ids to avoid key conflicts
+    function deleteTask(taskId) {
+        let newTasks = tasks.filter(task => task.id != taskId);
+        for (let i = 0; i < newTasks.length; i++) {
+            newTasks[i].id = i;
+        }
+        setTasks(newTasks);
+    }
+
     // the createTask function gets passed to TaskCreator to receive the taskTitle from the input
     // stored tasks are sent to tasklist to be displayed
-    return <div id="task-container">
-        <TaskCreator createTask={createTask} />
-        <TaskList tasks={tasks} />
-    </div>;
+    // deleteTask gets passed to every TaskCard to handle each removal
+    return (
+        <div id="task-container">
+            <TaskCreator createTask={createTask} />
+            <TaskList deleteTask={deleteTask} tasks={tasks} />
+        </div>
+    );
 }
