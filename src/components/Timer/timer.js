@@ -1,87 +1,95 @@
-import { useState } from 'react';
-
+import { Component } from 'react';
 import '../../style/timer.css';
 
-export default function Timer({ pomodoroTime, breakTime }) {
+export default class Timer extends Component {
+  constructor(props) {
+    super(props);
 
-  const [mode, setMode] = useState('Pomodoro');
-  const [time, setTime] = useState(pomodoroTime * 60);
-  const [isRunning, setIsRunning] = useState(false);
-  const [pomodoroCount, setPomodoroCount] = useState(0);
-  // Interval variable for updating the timer
-  const [timerInterval, setTimerInterval] = useState();
+    // Initial state with Pomodoro mode, initial Pomodoro duration, and counter
+    this.state = {
+      mode: 'Pomodoro',
+      time: props.timer.pomodoro * 60, // Time in seconds for Pomodoro
+      isRunning: false,
+      pomodoroCount: 0,
+    };
 
-
-
-  function stopTimer() {
-    setIsRunning(false);
-    clearInterval(timerInterval);
+    // Interval variable for updating the timer
+    this.timerInterval = null;
   }
 
-  function startTimer() {
-    if (isRunning) return;
-    setIsRunning(true);
+  stopTimer() {
+    clearInterval(this.timerInterval);
+    this.setState({ isRunning: false });
+  };
 
-    const newInterval = setInterval(() => {
+  startTimer() {
+    if (this.state.isRunning) return;
 
-      setTime(time - 1);
+    this.setState({ isRunning: true });
 
-      if (time <= 0) {
-        stopTimer();
-        setTime(0);
+    this.timerInterval = setInterval(() => {
+      this.setState((prevState) => ({
+        time: prevState.time - 1,
+      }));
 
-        if (mode === 'Pomodoro') {
+      if (this.state.time <= 0) {
+        this.stopTimer();
+        this.setState({ time: 0 });
+
+        if (this.state.mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
-          setMode('Break');
-          setTime(breakTime * 60);
-          setPomodoroCount(pomodoroCount + 1);
-
-          startTimer();
-
+          this.setState((prevState) => ({
+            mode: 'Break',
+            time: this.props.timer.break * 60,
+            pomodoroCount: prevState.pomodoroCount + 1,
+          }));
+          this.startTimer();
         } else {
           // Reset to Pomodoro mode after the break
-          setMode('Pomodoro');
-          setTime(pomodoroTime * 60);
+          this.setState({
+            mode: 'Pomodoro',
+            time: this.props.timer.pomodoro * 60,
+          });
         }
       }
-
     }, 1000);
+  };
 
-    setTimerInterval(newInterval);
-  }
+  restartTimer() {
+    this.stopTimer();
+    this.setState({
+      mode: 'Pomodoro',
+      time: this.props.timer.pomodoro * 60,
+      isRunning: false,
+    });
+  };
 
-  function restartTimer() {
-    stopTimer();
+  render() {
+    const { mode, time, pomodoroCount } = this.state;
 
-    setMode('Pomodoro');
-    setTime(pomodoroTime * 60);
-  }
+    return (
+      <div className="timer-container">
+        <div className="timer-mode">{mode}</div>
+        <div className="timer-time">
+          {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
+        </div>
 
-  return (
-    <div className="timer-container">
-      <div className="timer-mode">{mode}</div>
-      <div className="timer-time">
-        {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
+        <span className="badge text-bg-success pomodoro-counter">
+          Completed pomodoros: {pomodoroCount}
+        </span>
+
+        <div className="timer-buttons">
+          <button onClick={this.startTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">play_arrow</span>
+          </button>
+          <button onClick={this.stopTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">pause</span>
+          </button>
+          <button onClick={this.restartTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">replay</span>
+          </button>
+        </div>
       </div>
-
-
-      <span className="badge text-bg-success pomodoro-counter">
-        Completed pomodoros: {pomodoroCount}
-      </span>
-
-
-      <div className="timer-buttons">
-        <button onClick={startTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">play_arrow</span>
-        </button>
-        <button onClick={stopTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">pause</span>
-        </button>
-        <button onClick={restartTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">replay</span>
-        </button>
-      </div>
-    </div>
-  );
-
+    );
+  }
 }

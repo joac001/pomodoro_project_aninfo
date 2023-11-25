@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-    <Timer pomodoroTime={25} breakeTime={5} />
+    <Timer timer={{ pomodoro: 25, break: 5 }} />
     <TaskContainer />
 
   </React.StrictMode>
