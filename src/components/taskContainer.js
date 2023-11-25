@@ -24,7 +24,8 @@ export default function TaskContainer() {
     function createTask(taskTitle) {
         setTasks([...tasks, {
             id: tasks.length,
-            title: taskTitle
+            title: taskTitle,
+            checked: false
         }]);
     }
 
