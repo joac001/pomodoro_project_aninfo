@@ -6,7 +6,9 @@ export default function TaskCard({ deleteTask, task }) {
             <span
                 className="material-symbols-outlined icon-delete"
                 id="inputGroup-sizing-default"
-                onClick={() => deleteTask(task.id)}
+                onClick={
+                    () => deleteTask(task.id)
+                }
             >
                 delete
             </span>

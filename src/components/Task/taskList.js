@@ -11,9 +11,11 @@ export default function TaskList({ deleteTask, tasks }) {
             // the map method allows for element creation iterating on the given array
             // key property is needed to avoid a specific compiler warning, is determined by the array's length
             <div id="task-list">
-                {tasks.map((task) => (
-                    <TaskCard deleteTask={deleteTask} key={task.id} task={task} />
-                ))}
+                {
+                    tasks.map(
+                        (task) => <TaskCard deleteTask={deleteTask} key={task.id} task={task} />
+                    )
+                }
             </div>
     );
 }
