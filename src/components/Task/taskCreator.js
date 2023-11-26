@@ -1,4 +1,3 @@
-import TaskList from "./taskList";
 import { useState } from "react";
 
 export default function TaskCreator({ createTask }) {
@@ -18,7 +17,6 @@ export default function TaskCreator({ createTask }) {
     // upon changing, the value of the input gets stored in taskTitle with setTaskTitle
     return (
         <form onSubmit={handleSubmit} className="task-form">
-
             <input
                 type="text"
                 className="form-control"
@@ -26,12 +24,15 @@ export default function TaskCreator({ createTask }) {
                 id="task-name"
                 placeholder="Enter a task name..."
                 onChange={(e) => setTaskTitle(e.target.value)}
-                value={taskTitle} />
+                value={taskTitle}
+            />
 
-            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length == 0}>
+            <button className="btn btn-secondary btn-add" id="add-task" disabled={taskTitle.trim().length === 0}>
+
                 <span className="material-symbols-outlined" id="inputGroup-sizing-default">
                     add
                 </span>
+
             </button>
 
         </form>

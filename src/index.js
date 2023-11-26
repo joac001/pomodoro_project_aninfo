@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+
+import Timer from './components/Timer/timer.js'
+import TaskContainer from './components/Task/taskContainer.js'
 
 import './style/index.css';
-import Timer from './components/timer';
-import TaskContainer from './components/taskContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
