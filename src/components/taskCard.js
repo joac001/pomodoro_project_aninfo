@@ -1,29 +1,32 @@
-import { useState } from "react";
+export default function TaskCard({ task, updateTaskCounter, deleteTask }) {
 
-export default function TaskCard({ updateTaskCounter, deleteTask, task }) {
-
+    // function updates the value of checked attribute of a single task
+    // it subsequently requests an update in the counter value
     function toggleCheckbox(task) {
-        if (!task.checked) {
-            task.checked = true;
-            // alert("CHANGE")
-        }
+        if (!task.checked) task.checked = true;
         else task.checked = false;
         updateTaskCounter();
     }
 
+    // when clicked, a checkbox changes it internal state and the counter updates
+    // to conserve accuracy when deleting tasks, checkbox gets unchecked beforehand
     return (
 
         <div className="card-body">
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={task.checked} onClick={() => toggleCheckbox(task)}  />
+                <input className="form-check-input" type="checkbox" 
+                       checked={task.checked} onChange={() => toggleCheckbox(task)} />
 
                 <label className="form-check-label">{ task.title }</label>
             </div>
-            {/* <p className="task-title">{task.title}</p> */}
+
             <span
                 className="material-symbols-outlined icon-delete"
                 id="inputGroup-sizing-default"
-                onClick={() => deleteTask(task.id)}
+                onClick={() => {
+                    if (task.checked) toggleCheckbox(task);
+                    deleteTask(task);
+                }}
             >
                 delete
             </span>
