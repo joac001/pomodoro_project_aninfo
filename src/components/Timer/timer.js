@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import '../style/timer.css';
+import { Component } from 'react';
+import '../../style/timer.css';
 
-class Timer extends Component {
+export default class Timer extends Component {
   constructor(props) {
     super(props);
 
@@ -17,12 +17,12 @@ class Timer extends Component {
     this.timerInterval = null;
   }
 
-  stopTimer = () => {
+  stopTimer() {
     clearInterval(this.timerInterval);
     this.setState({ isRunning: false });
   };
 
-  startTimer = () => {
+  startTimer() {
     if (this.state.isRunning) return;
 
     this.setState({ isRunning: true });
@@ -55,7 +55,7 @@ class Timer extends Component {
     }, 1000);
   };
 
-  restartTimer = () => {
+  restartTimer() {
     this.stopTimer();
     this.setState({
       mode: 'Pomodoro',
@@ -74,11 +74,9 @@ class Timer extends Component {
           {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
         </div>
 
-
-        <span class="badge text-bg-success pomodoro-counter">
+        <span className="badge text-bg-success pomodoro-counter">
           Completed pomodoros: {pomodoroCount}
         </span>
-
 
         <div className="timer-buttons">
           <button onClick={this.startTimer} type="button" className="btn btn-light">
@@ -95,5 +93,3 @@ class Timer extends Component {
     );
   }
 }
-
-export default Timer;
