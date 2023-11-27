@@ -1,0 +1,38 @@
+.about-container {
+    justify-self: center;
+    align-self: start;
+
+    margin-top: 5vh;
+}
+
+.about-btn {
+    color: rgb(189, 189, 189);
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.about-btn:hover {
+    color: white;
+    animation-name: tilt-icon;
+    animation-duration: 500ms;
+}
+
+@keyframes tilt-icon {
+    0% {
+        transform: rotate(25deg);
+    }
+
+    25% {
+        transform: rotate(50deg);
+    }
+
+    50% {
+        transform: rotate(50deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
