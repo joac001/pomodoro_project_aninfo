@@ -10,19 +10,19 @@ export default class Timer extends Component {
       mode: 'Pomodoro',
       time: props.timer.pomodoro * 60, // Time in seconds for Pomodoro
       isRunning: false,
-      pomodoroCount: 0,
+      pomodoroCount: 0
     };
 
     // Interval variable for updating the timer
     this.timerInterval = null;
   }
 
-  stopTimer() {
+  stopTimer = () => {
     clearInterval(this.timerInterval);
     this.setState({ isRunning: false });
   };
 
-  startTimer() {
+  startTimer = () => {
     if (this.state.isRunning) return;
 
     this.setState({ isRunning: true });
@@ -55,7 +55,7 @@ export default class Timer extends Component {
     }, 1000);
   };
 
-  restartTimer() {
+  restartTimer = () => {
     this.stopTimer();
     this.setState({
       mode: 'Pomodoro',
