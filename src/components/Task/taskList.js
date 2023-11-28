@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import TaskCard from "./taskCard";
 
 export default function TaskList({ deleteTask, tasks }) {
 
     // checkedBoxes stores the number of tasks currently checked
     // gets updated when clicking a single checkbox, from updateTaskCounter function
-    let [checkedBoxes, setCheckedBoxes] = useState(0);
+    let [checkedBoxes, setCheckedBoxes] = useState(JSON.parse(localStorage.getItem('taskChecked')) || 0);
+
+    useEffect(() => {
+        localStorage.setItem('taskChecked', JSON.stringify(checkedBoxes));
+    }, [checkedBoxes]);
 
     function updateTaskCounter() {
         setCheckedBoxes(tasks.filter(task => task.checked === true).length);
+        localStorage.setItem('taskList', JSON.stringify(tasks));
     }
 
     return (

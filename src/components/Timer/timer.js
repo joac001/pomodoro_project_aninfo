@@ -6,16 +6,23 @@ export default class Timer extends Component {
     super(props);
 
     // Initial state with Pomodoro mode, initial Pomodoro duration, and counter
-    this.state = {
-      mode: 'Pomodoro',
-      time: props.timer.pomodoro * 60, // Time in seconds for Pomodoro
-      isRunning: false,
-      pomodoroCount: 0
-    };
+    this.state = JSON.parse(localStorage.getItem('timerState'));
+    if (!this.state) {
+      this.state = {
+        mode: 'Pomodoro',
+        time: props.timer.pomodoro * 60,
+        isRunning: false,
+        pomodoroCount: 0
+      };
+    }
 
     // Interval variable for updating the timer
     this.timerInterval = null;
   }
+
+  // save= () =>{
+  //   localStorage.setItem('timerState', JSON.stringify(this.state));
+  // };
 
   stopTimer = () => {
     clearInterval(this.timerInterval);
@@ -31,10 +38,11 @@ export default class Timer extends Component {
       this.setState((prevState) => ({
         time: prevState.time - 1,
       }));
-
       if (this.state.time <= 0) {
         this.stopTimer();
         this.setState({ time: 0 });
+        // 
+        // localStorage.setItem('timerState', JSON.stringify(this.state));
 
         if (this.state.mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
@@ -43,6 +51,8 @@ export default class Timer extends Component {
             time: this.props.timer.break * 60,
             pomodoroCount: prevState.pomodoroCount + 1,
           }));
+          // 
+          // localStorage.setItem('timerState', JSON.stringify(this.state));
           this.startTimer();
         } else {
           // Reset to Pomodoro mode after the break
@@ -50,8 +60,12 @@ export default class Timer extends Component {
             mode: 'Pomodoro',
             time: this.props.timer.pomodoro * 60,
           });
+          // 
+          // localStorage.setItem('timerState', JSON.stringify(this.state));
         }
       }
+      // 
+      // localStorage.setItem('timerState', JSON.stringify(this.state));
     }, 1000);
   };
 
@@ -62,6 +76,8 @@ export default class Timer extends Component {
       time: this.props.timer.pomodoro * 60,
       isRunning: false,
     });
+    // 
+    // localStorage.setItem('timerState', JSON.stringify(this.state));
   };
 
   render() {
