@@ -14,19 +14,20 @@ export default class Timer extends Component {
         isRunning: false,
         pomodoroCount: 0
       };
-    }
+    };
 
     // Interval variable for updating the timer
     this.timerInterval = null;
   }
 
-  // save= () =>{
-  //   localStorage.setItem('timerState', JSON.stringify(this.state));
-  // };
+  save= (timerState) =>{
+    localStorage.setItem('timerState', JSON.stringify(timerState));
+  };
 
   stopTimer = () => {
     clearInterval(this.timerInterval);
     this.setState({ isRunning: false });
+    this.save(this.state);
   };
 
   startTimer = () => {
@@ -41,8 +42,6 @@ export default class Timer extends Component {
       if (this.state.time <= 0) {
         this.stopTimer();
         this.setState({ time: 0 });
-        // 
-        // localStorage.setItem('timerState', JSON.stringify(this.state));
 
         if (this.state.mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
@@ -51,8 +50,6 @@ export default class Timer extends Component {
             time: this.props.timer.break * 60,
             pomodoroCount: prevState.pomodoroCount + 1,
           }));
-          // 
-          // localStorage.setItem('timerState', JSON.stringify(this.state));
           this.startTimer();
         } else {
           // Reset to Pomodoro mode after the break
@@ -60,12 +57,9 @@ export default class Timer extends Component {
             mode: 'Pomodoro',
             time: this.props.timer.pomodoro * 60,
           });
-          // 
-          // localStorage.setItem('timerState', JSON.stringify(this.state));
         }
       }
-      // 
-      // localStorage.setItem('timerState', JSON.stringify(this.state));
+      this.save(this.state);
     }, 1000);
   };
 
@@ -76,8 +70,6 @@ export default class Timer extends Component {
       time: this.props.timer.pomodoro * 60,
       isRunning: false,
     });
-    // 
-    // localStorage.setItem('timerState', JSON.stringify(this.state));
   };
 
   render() {
