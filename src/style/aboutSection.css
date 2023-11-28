@@ -12,27 +12,50 @@
     user-select: none;
 }
 
-.about-btn:hover {
-    color: white;
-    animation-name: tilt-icon;
-    animation-duration: 500ms;
+.close-offcanvas-btn {
+    color: rgb(189, 189, 189);
+    cursor: pointer;
 }
 
-@keyframes tilt-icon {
-    0% {
-        transform: rotate(25deg);
-    }
+.close-offcanvas-btn:hover {
+    color: white;
+}
 
-    25% {
-        transform: rotate(50deg);
+.about-content-container {
+    >p {
+        font-style: italic;
     }
+}
 
-    50% {
-        transform: rotate(50deg);
-    }
+.single-graph-container {
+    display: flex;
+    justify-content: flex-start;
+}
 
-    100% {
-        transform: rotate(0deg);
-    }
+.graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    color: black;
+
+    margin-top: 20px;
+    border-radius: 50px;
+
+    height: 20px;
+}
+
+.pomodoro-graph {
+    width: 50%;
+    background-color: rgb(69, 141, 69);
+}
+
+.graph-one-break {
+    width: 30%;
+    background-color: rgb(34, 136, 34);
+}
+
+.graph-two-break {
+    width: 50%;
+    background-color: rgb(34, 136, 34);
 }
