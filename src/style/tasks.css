@@ -1,13 +1,15 @@
+#task-container {
+    margin: 25vh 0 0 5vh;
+    user-select: none;
+}
+
 .task-form {
     display: grid;
     align-items: center;
-    justify-content: center;
 
     grid-template-columns: 200px 100px;
 
     margin: 5px 0px 20px 0px;
-
-    user-select: none;
 
     >input {
         background-color: rgb(167, 167, 167);
@@ -45,12 +47,14 @@
     border: 1px solid rgb(46, 44, 44);
     border-radius: 50px;
 
-    color: white;
-    user-select: none;
-    font-size: large;
+    width: 75%;
 
     padding: 10px;
     margin-bottom: 10px;
+
+    color: white;
+    user-select: none;
+    font-size: large;
 
     word-wrap: break-word;
 
@@ -86,16 +90,16 @@
 }
 
 .form-check-input:hover {
-    box-shadow: 0px 0px 0px 0.25rem rgba(128,128,128,0.25);
+    box-shadow: 0px 0px 0px 0.25rem rgba(128, 128, 128, 0.25);
     transition-duration: 0.2s;
 }
 
 .form-check-input:checked:hover {
-    box-shadow: 0px 0px 0px 0.25rem rgba(0,128,0,0.25);
+    box-shadow: 0px 0px 0px 0.25rem rgba(0, 128, 0, 0.25);
     transition-duration: 0.2s;
 }
 
-.form-check-input:checked + .form-check-label {
+.form-check-input:checked+.form-check-label {
     color: dimgray;
     text-decoration: line-through;
 }
