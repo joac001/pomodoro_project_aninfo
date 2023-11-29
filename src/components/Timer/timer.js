@@ -96,7 +96,7 @@ export default class Timer extends Component {
           </button>
         </div>
         <div>
-          <div style={{ width: '300px', border: '1px solid #ccc', marginTop: '10px' }}>
+          <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
             <div
               style={{
                 width: `${(this.state.pomodoroCount % 4) * 25}%`,
