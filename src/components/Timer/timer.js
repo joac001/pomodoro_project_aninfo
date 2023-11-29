@@ -95,6 +95,19 @@ export default class Timer extends Component {
             <span className="material-symbols-outlined">replay</span>
           </button>
         </div>
+        <div>
+          <div style={{ width: '300px', border: '1px solid #ccc', marginTop: '10px' }}>
+            <div
+              style={{
+                width: `${(this.state.pomodoroCount % 4) * 25}%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
+              }}
+            />
+          </div>
+          <p>{`${this.state.pomodoroCount % 4}/4 pomodoros until large break!`}</p>
+        </div>
       </div>
     );
   }
