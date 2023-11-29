@@ -1,0 +1,101 @@
+.task-form {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-columns: 200px 100px;
+
+    margin: 5px 0px 20px 0px;
+
+    user-select: none;
+
+    >input {
+        background-color: rgb(167, 167, 167);
+        border-color: rgba(255, 255, 255, 0);
+
+        width: 200px;
+        height: 50px;
+    }
+}
+
+.no-task-added {
+    color: grey;
+    font-style: italic;
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px;
+    height: 50px;
+}
+
+.btn-add:hover {
+    border: 1px solid;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(46, 44, 44);
+    border: 1px solid rgb(46, 44, 44);
+    border-radius: 50px;
+
+    color: white;
+    user-select: none;
+    font-size: large;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    word-wrap: break-word;
+
+    >P {
+        margin: 10px;
+    }
+}
+
+.card-body:hover {
+    border: 1px solid rgb(94, 94, 94);
+}
+
+.icon-delete {
+    cursor: pointer;
+    color: rgb(107, 107, 107);
+    margin: 5px 10px 5px 5px;
+}
+
+.icon-delete:hover {
+    color: rgb(223, 223, 223);
+}
+
+/* task card checkbox */
+.form-check-input:checked {
+    border: none;
+    background-color: green;
+}
+
+.form-check-input:focus {
+    border: none;
+    box-shadow: none;
+    transition-duration: 0.2s;
+}
+
+.form-check-input:hover {
+    box-shadow: 0px 0px 0px 0.25rem rgba(128,128,128,0.25);
+    transition-duration: 0.2s;
+}
+
+.form-check-input:checked:hover {
+    box-shadow: 0px 0px 0px 0.25rem rgba(0,128,0,0.25);
+    transition-duration: 0.2s;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: dimgray;
+    text-decoration: line-through;
+}

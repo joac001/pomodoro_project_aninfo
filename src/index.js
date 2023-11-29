@@ -1,16 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+
+import Timer from './components/Timer/timer.js'
+import TaskContainer from './components/Task/taskContainer.js'
 
 import './style/index.css';
-import ComponentExample from './components/componentExample';
-import Timer from './components/timer'; // Adjust the import path
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <div>
-      <Timer timer={{ pomodoro: 25 }} />
-    </div>
+
+    <Timer timer={{ pomodoro: 25, break: 5 }} />
+    <TaskContainer />
+
   </React.StrictMode>
 );
