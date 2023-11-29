@@ -16,3 +16,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  display: grid;
+
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: 25vh;
+
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
