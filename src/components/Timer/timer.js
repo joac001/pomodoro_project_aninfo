@@ -21,7 +21,11 @@ export default class Timer extends Component {
   }
 
   save= (timerState) =>{
-    localStorage.setItem('timerState', JSON.stringify(timerState));
+    // creates a copy of the original timer state, sets the copy's isRunning value to false, and stores it
+    // upon refreshing, the timer will be paused, so buttons will work as intended
+    let copyState = { ...timerState };
+    copyState.isRunning = false;
+    localStorage.setItem('timerState', JSON.stringify(copyState));
   };
 
   stopTimer = () => {
