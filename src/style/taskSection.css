@@ -23,4 +23,17 @@
 
 .close-offcanvas-btn:hover {
     color: white;
+
+    animation: rotateCloseButton;
+    animation-duration: 500ms;
+}
+
+@keyframes rotateCloseButton {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
 }

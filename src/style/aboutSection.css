@@ -17,10 +17,6 @@
     cursor: pointer;
 }
 
-.close-offcanvas-btn:hover {
-    color: white;
-}
-
 .about-content-container {
     >p {
         font-style: italic;
