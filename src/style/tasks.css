@@ -21,6 +21,8 @@
     align-items: center;
     justify-content: center;
     align-items: flex-end;
+
+    user-select: none;
 }
 
 .task-form {
