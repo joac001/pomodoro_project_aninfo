@@ -21,13 +21,16 @@ export default function TaskList({ deleteTask, tasks }) {
             // the map method allows for element creation iterating on the given array
             // key property is needed to avoid a specific compiler warning, is determined by the array's length
             <div id="task-list">
-                <p className="no-task-added">Completed Tasks: { checkedBoxes }/{ tasks.length }</p>
+                <div className="scrollable-task-list">
+                    {
+                        tasks.map(
+                            (task) => <TaskCard key={task.id} task={task} updateTaskCounter={updateTaskCounter} deleteTask={deleteTask} />
+                        )
+                    }
+                </div>
 
-                {
-                    tasks.map(
-                        (task) => <TaskCard key={task.id} task={task} updateTaskCounter={updateTaskCounter} deleteTask={deleteTask} />
-                    )
-                }
+                <p className="no-task-added">Completed Tasks: {checkedBoxes}/{tasks.length}</p>
+
             </div>
     );
 }

@@ -1,0 +1,26 @@
+.tasks-sidebar-container {
+    justify-self: center;
+    align-self: start;
+
+    margin-top: 5vh;
+}
+
+.task-sidebar-btn {
+    color: rgb(189, 189, 189);
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.task-sidebar-btn:hover {
+    color: white;
+}
+
+.close-offcanvas-btn {
+    color: rgb(189, 189, 189);
+    cursor: pointer;
+}
+
+.close-offcanvas-btn:hover {
+    color: white;
+}

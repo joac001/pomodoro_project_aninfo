@@ -23,7 +23,7 @@ export default function AboutSection() {
 
                 <div className="offcanvas-header">
                     <span className="material-symbols-outlined close-offcanvas-btn" onClick={() => { setVisibility('hide') }}>
-                        arrow_back
+                        close
                     </span>
 
                     <h5 className="offcanvas-title" id="offcanvasLabel">What is pomodoro?</h5>
