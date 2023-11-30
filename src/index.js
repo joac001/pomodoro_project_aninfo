@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Timer from './components/Timer/timer.js';
-import TaskContainer from './components/Task/taskContainer.js';
+import TaskContainer from './components/Task/taskSection.js';
 import AboutSection from './components/About/aboutSection.js';
 
 import './style/index.css';
