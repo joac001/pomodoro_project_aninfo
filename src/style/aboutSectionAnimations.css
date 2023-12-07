@@ -1,0 +1,153 @@
+.about-btn:hover {
+    color: white;
+    animation-name: tilt-icon;
+    animation-duration: 500ms;
+}
+
+@keyframes tilt-icon {
+    0% {
+        transform: rotate(25deg);
+    }
+
+    25% {
+        transform: rotate(50deg);
+    }
+
+    50% {
+        transform: rotate(50deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+/* Animation for the pomodoro bars */
+.one-pomodoro {
+    animation: fill-graph-pomodoro;
+    animation-duration: 3s;
+}
+
+.two-pomodoro {
+    animation: fill-graph-pomodoro;
+    animation-duration: 4s;
+}
+
+.three-pomodoro {
+    animation: fill-graph-pomodoro;
+    animation-duration: 5s;
+}
+
+.four-pomodoro {
+    animation: fill-graph-pomodoro;
+    animation-duration: 6s;
+}
+
+@keyframes fill-graph-pomodoro {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 50%;
+    }
+}
+
+/* Animation for the break bars */
+.one-break {
+    animation: fill-graph-break;
+    animation-duration: 7s;
+}
+
+.two-break {
+    animation: fill-graph-break;
+    animation-duration: 8s;
+}
+
+.three-break {
+    animation: fill-graph-break;
+    animation-duration: 9s;
+}
+
+@keyframes fill-graph-break {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+
+.four-break {
+    animation: fill-graph-long-break;
+    animation-duration: 10s;
+}
+
+@keyframes fill-graph-long-break {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 50%;
+    }
+}
+
+/* Animation for the text */
+.graph-text {
+    visibility: visible;
+
+    color: black;
+    font-weight: 500;
+
+    animation: show-text;
+    animation-duration: 15s;
+}
+
+@keyframes show-text {
+    0% {
+        visibility: hidden;
+    }
+
+    10% {
+        visibility: hidden;
+    }
+
+    20% {
+        visibility: hidden;
+    }
+
+    30% {
+        visibility: hidden;
+    }
+
+    40% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: hidden;
+    }
+
+    85% {
+        color: rgb(56, 56, 56);
+    }
+
+    95% {
+        color: rgb(34, 34, 34);
+    }
+}

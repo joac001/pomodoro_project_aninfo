@@ -1,14 +1,14 @@
 .timer-container {
   justify-content: center;
-  text-align: center;
+  justify-self: center;
 
+  text-align: center;
   color: white;
 
   width: 250px;
   height: 250px;
 
   padding: 20px;
-  margin: 15px;
 
   user-select: none;
 }

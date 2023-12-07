@@ -73,17 +73,35 @@ export default function Timer(props) {
       <span className="badge text-bg-success pomodoro-counter">
         Completed pomodoros: {cycles}
       </span>
-
-      <div className="timer-buttons">
-        <button onClick={playTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">play_arrow</span>
-        </button>
-        <button onClick={pauseTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">pause</span>
-        </button>
-        <button onClick={restartTimer} type="button" className="btn btn-light">
-          <span className="material-symbols-outlined">replay</span>
-        </button>
+        <div className="timer-buttons">
+          {
+            isRunning
+              ?
+              <button onClick={pauseTimer} type="button" className="btn btn-light">
+                <span className="material-symbols-outlined">pause</span>
+              </button>
+              :
+              <button onClick={playTimer} type="button" className="btn btn-light">
+                <span className="material-symbols-outlined">play_arrow</span>
+              </button>
+          }
+          <button onClick={restartTimer} type="button" className="btn btn-light">
+            <span className="material-symbols-outlined">replay</span>
+          </button>
+        </div>
+        <div>
+          <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
+            <div
+              style={{
+                width: `${(cycles % 4) * 25}%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
+              }}
+            />
+          </div>
+          <p>{`${cycles % 4}/4 pomodoros until large break!`}</p>
+        </div>
       </div>
     </div>
   );
