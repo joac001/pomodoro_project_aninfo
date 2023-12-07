@@ -2,15 +2,20 @@ import { Component, useEffect, useState } from 'react';
 import '../../style/timer.css';
 
 export default function Timer(props) {
-  localStorage.clear();
+  // localStorage.clear();
 
   let [timerMode, setTimerMode] = useState(localStorage.getItem("timerMode") ?? "Pomodoro");
   let [time, setTime] = useState(localStorage.getItem("time") ?? props.timer.pomodoro * 60);
-  let [isRunning, setIsRunning] = useState(localStorage.getItem("isRunning") ?? false);
+  // let [isRunning, setIsRunning] = useState(localStorage.getItem("isRunning") ?? false);
+  let [isRunning, setIsRunning] = useState(false);
   let [cycleCount, setCycleCount] = useState(localStorage.getItem("cycleCount") ?? 0);
   
   useEffect(() => {
     let timerInterval;
+
+    localStorage.setItem("time", time);
+    localStorage.setItem("timerMode", timerMode);
+    localStorage.setItem("cycleCount", cycleCount);
 
     if (isRunning && time > 0) {
       timerInterval = setInterval(() => {
@@ -70,6 +75,8 @@ export default function Timer(props) {
     // clearInterval(timerInterval);
     // timerInterval = null;
     setIsRunning(false);
+    // localStorage.setItem("time", time);
+
   }
 
   function restartTimer() {
@@ -78,6 +85,8 @@ export default function Timer(props) {
     setIsRunning(false);
     setTime(props.timer.pomodoro * 60);
     setTimerMode("Pomodoro");
+
+    // localStorage.setItem("time", time);
   }
 
   return (
