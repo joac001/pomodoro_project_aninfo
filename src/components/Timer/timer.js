@@ -10,7 +10,8 @@ export default class Timer extends Component {
       mode: 'Pomodoro',
       time: props.timer.pomodoro * 60, // Time in seconds for Pomodoro
       isRunning: false,
-      pomodoroCount: 0
+      cyclePomodoroCount: 0,
+      globalPomodoroCount: 0,
     };
 
     // Interval variable for updating the timer
@@ -24,26 +25,41 @@ export default class Timer extends Component {
 
   startTimer = () => {
     if (this.state.isRunning) return;
-
+  
     this.setState({ isRunning: true });
-
+  
     this.timerInterval = setInterval(() => {
       this.setState((prevState) => ({
         time: prevState.time - 1,
       }));
-
+  
       if (this.state.time <= 0) {
         this.stopTimer();
         this.setState({ time: 0 });
-
+  
         if (this.state.mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
           this.setState((prevState) => ({
-            mode: 'Break',
-            time: this.props.timer.break * 60,
-            pomodoroCount: prevState.pomodoroCount + 1,
-          }));
-          this.startTimer();
+            cyclePomodoroCount: prevState.cyclePomodoroCount + 1,
+            globalPomodoroCount: prevState.globalPomodoroCount + 1,
+          }), () => {
+            if (this.state.cyclePomodoroCount === 4) {
+              // Take a long break after completing 4 pomodoros
+              this.setState({
+                mode: 'Long Break',
+                time: this.props.timer.longBreak * 60, // Set the duration for the long break
+                cyclePomodoroCount: 0, // Reset the Pomodoro count
+              });
+            } else {
+              // Take a short break after completing a Pomodoro session
+              this.setState({
+                mode: 'Break',
+                time: this.props.timer.break * 60,
+              });
+            }
+  
+            this.startTimer();
+          });
         } else {
           // Reset to Pomodoro mode after the break
           this.setState({
@@ -52,8 +68,11 @@ export default class Timer extends Component {
           });
         }
       }
+  
     }, 1000);
   };
+  
+  
 
   restartTimer = () => {
     this.stopTimer();
@@ -66,7 +85,7 @@ export default class Timer extends Component {
 
 
   render() {
-    const { mode, time, pomodoroCount } = this.state;
+    const { mode, time, cyclePomodoroCount, globalPomodoroCount } = this.state;
 
     return (
       <div className="timer-container">
@@ -76,7 +95,7 @@ export default class Timer extends Component {
         </div>
 
         <span className="badge text-bg-success pomodoro-counter">
-          Completed pomodoros: {pomodoroCount}
+          Completed pomodoros: {globalPomodoroCount}
         </span>
 
         <div className="timer-buttons">
@@ -99,14 +118,14 @@ export default class Timer extends Component {
           <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
             <div
               style={{
-                width: `${(this.state.pomodoroCount % 4) * 25}%`,
+                width: `${(cyclePomodoroCount % 4) * 25}%`,
                 height: '20px',
                 backgroundColor: 'green',
                 transition: 'width 0.5s ease-in-out',
               }}
             />
           </div>
-          <p>{`${this.state.pomodoroCount % 4}/4 pomodoros until large break!`}</p>
+          <p>{`${cyclePomodoroCount % 4}/4 pomodoros until large break!`}</p>
         </div>
       </div>
     );
