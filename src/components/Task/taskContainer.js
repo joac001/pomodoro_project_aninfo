@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TaskCreator from "./taskCreator.js";
 import TaskList from "./taskList.js";
@@ -8,7 +8,12 @@ import '../../style/tasks.css'
 export default function TaskContainer() {
     // useState allows updates to the tasks array via setTasks
     // the array holds all the added tasks of the current session, starts as empty array
-    let [tasks, setTasks] = useState([]);
+    let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('taskList')) || []);
+
+    useEffect(() => {
+        localStorage.setItem('taskList', JSON.stringify(tasks));
+    }, [tasks]);
+
 
     // createTask is a function to add a new task to tasks, given a taskTitle
     // not called here because of the tasks array intended scope
