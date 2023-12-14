@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import Timer from './components/Timer/timer.js';
 import TaskContainer from './components/Task/taskSection.js';
 import AboutSection from './components/About/aboutSection.js';
+import ClearButton from './components/clearButton/clearButton.js';
 
 import './style/index.css';
 
@@ -18,6 +19,8 @@ root.render(
     <Timer timer={{ pomodoro: 25, break: 5 }} />
 
     <AboutSection />
+
+    <ClearButton />
 
   </React.StrictMode>
 );
