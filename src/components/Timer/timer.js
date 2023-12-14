@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import '../../style/timer.css';
 
 export default function Timer(props) {
+  // localStorage.clear();
   // check if values are stored, otherwise loads default values
-  let [time, setTime] = useState(localStorage.getItem("time") ?? (props.timer.pomodoro * 60));
-  let [mode, setMode] = useState(localStorage.getItem("mode") ?? "Pomodoro");
-  let [cycles, setCycles] = useState(localStorage.getItem("cycles") ?? 0);
+  let [time, setTime] = useState( JSON.parse(localStorage.getItem("time")) || (props.timer.pomodoro * 60) );
+  let [mode, setMode] = useState( localStorage.getItem("mode") || "Pomodoro" );
+  let [cycles, setCycles] = useState( JSON.parse(localStorage.getItem("cycles")) || 0 );
 
   let [isRunning, setIsRunning] = useState(false); // always starts paused
   
@@ -33,9 +34,9 @@ export default function Timer(props) {
   }, [isRunning, time]);
 
   function saveToLocalStorage() {
-    localStorage.setItem("time", time);
+    localStorage.setItem("time", JSON.stringify(time));
     localStorage.setItem("mode", mode);
-    localStorage.setItem("cycles", cycles);
+    localStorage.setItem("cycles", JSON.stringify(cycles));
   }
 
   function switchMode() {
