@@ -21,9 +21,8 @@ code {
   display: grid;
 
   grid-template-columns: repeat(3, 33.33%);
-  grid-template-rows: 25vh;
+  grid-template-rows: 100vh;
 
   justify-content: center;
-  align-items: center;
   flex: 1;
 }

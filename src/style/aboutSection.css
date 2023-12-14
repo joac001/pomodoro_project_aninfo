@@ -3,6 +3,7 @@
     align-self: start;
 
     margin-top: 5vh;
+    user-select: none;
 }
 
 .about-btn {
@@ -15,10 +16,6 @@
 .close-offcanvas-btn {
     color: rgb(189, 189, 189);
     cursor: pointer;
-}
-
-.close-offcanvas-btn:hover {
-    color: white;
 }
 
 .about-content-container {

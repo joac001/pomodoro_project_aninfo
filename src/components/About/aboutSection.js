@@ -19,11 +19,11 @@ export default function AboutSection() {
                 question_mark
             </span>
 
-            <div className={"offcanvas offcanvas-end  text-bg-dark " + visibility} data-bs-target="##offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div className={"offcanvas offcanvas-end text-bg-dark " + visibility} data-bs-target="##offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" id="offcanvas" aria-labelledby="offcanvasLabel">
 
                 <div className="offcanvas-header">
                     <span className="material-symbols-outlined close-offcanvas-btn" onClick={() => { setVisibility('hide') }}>
-                        arrow_back
+                        close
                     </span>
 
                     <h5 className="offcanvas-title" id="offcanvasLabel">What is pomodoro?</h5>
@@ -35,6 +35,6 @@ export default function AboutSection() {
 
 
             </div>
-        </div>
+        </div >
     );
 }

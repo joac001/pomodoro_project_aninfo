@@ -88,20 +88,30 @@ export default function Timer(props) {
         <button onClick={restartTimer} type="button" className="btn btn-light">
           <span className="material-symbols-outlined">replay</span>
         </button>
+
       </div>
+
       <div>
-        <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
-          <div
+        <div className="pomodoro-cycle-bar-container">
+
+          <div className='pomodoro-cycle-bar'
             style={{
+
               width: `${(cycles % 4) * 25}%`,
               height: '20px',
               backgroundColor: 'green',
+
               transition: 'width 0.5s ease-in-out',
             }}
-          />
+          >
+          </div>
+
         </div>
-        <p>{`${cycles % 4}/4 pomodoros until large break!`}</p>
+
+        <p className='pomodoros-till-long-brack'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
+
       </div>
+
     </div>
   );
 }
