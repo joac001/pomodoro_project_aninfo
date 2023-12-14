@@ -21,7 +21,7 @@ code {
   display: grid;
 
   grid-template-columns: repeat(3, 33.33%);
-  grid-template-rows: 100vh;
+  grid-template-rows: 80vh 7vh;
 
   justify-content: center;
   flex: 1;

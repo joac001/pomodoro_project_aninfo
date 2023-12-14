@@ -20,7 +20,8 @@ root.render(
 
     <AboutSection />
 
+    <span></span>
     <ClearButton />
-
+    <span></span>
   </React.StrictMode>
 );
