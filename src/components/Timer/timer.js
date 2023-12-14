@@ -4,12 +4,12 @@ import '../../style/timer.css';
 export default function Timer(props) {
   // localStorage.clear();
   // check if values are stored, otherwise loads default values
-  let [time, setTime] = useState( JSON.parse(localStorage.getItem("time")) || (props.timer.pomodoro * 60) );
-  let [mode, setMode] = useState( localStorage.getItem("mode") || "Pomodoro" );
-  let [cycles, setCycles] = useState( JSON.parse(localStorage.getItem("cycles")) || 0 );
+  let [time, setTime] = useState(JSON.parse(localStorage.getItem("time")) || (props.timer.pomodoro * 60));
+  let [mode, setMode] = useState(localStorage.getItem("mode") || "Pomodoro");
+  let [cycles, setCycles] = useState(JSON.parse(localStorage.getItem("cycles")) || 0);
 
   let [isRunning, setIsRunning] = useState(false); // always starts paused
-  
+
   // hook is called whenever variables time or isRunning are updated
   useEffect(() => {
     // saves current state in local storage
@@ -19,7 +19,7 @@ export default function Timer(props) {
     let timerInterval;
     if (isRunning && time > 0) {
       timerInterval = setInterval(() => {
-        setTime((time) => time-1);
+        setTime((time) => time - 1);
       }, 1000);
     }
 
@@ -110,12 +110,11 @@ export default function Timer(props) {
                   backgroundColor: 'green',
                   transition: 'width 0.5s ease-in-out',
                 }
-            
-            }
+              }
             />
           </div>
           <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
-        </div>
       </div>
+    </div>
   );
 }

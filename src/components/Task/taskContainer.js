@@ -40,8 +40,8 @@ export default function TaskContainer() {
     // deleteTask gets passed to every TaskCard to handle each removal
     return (
         <div id="task-container">
-            <TaskCreator createTask={createTask} />
             <TaskList deleteTask={deleteTask} tasks={tasks} />
+            <TaskCreator createTask={createTask} />
         </div>
     );
 }
