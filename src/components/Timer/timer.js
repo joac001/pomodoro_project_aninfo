@@ -109,7 +109,7 @@ export default function Timer(props) {
 
         </div>
 
-        <p>{`${cycles % 4}/4 pomodoros until large break!`}</p>
+        <p className='pomodoros-till-long-brack'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
 
       </div>
 

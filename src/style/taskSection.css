@@ -3,13 +3,12 @@
     align-self: start;
 
     margin-top: 5vh;
+    user-select: none;
 }
 
 .task-sidebar-btn {
     color: rgb(189, 189, 189);
     cursor: pointer;
-
-    user-select: none;
 }
 
 .task-sidebar-btn:hover {

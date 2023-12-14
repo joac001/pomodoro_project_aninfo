@@ -3,6 +3,7 @@
     align-self: start;
 
     margin-top: 5vh;
+    user-select: none;
 }
 
 .about-btn {

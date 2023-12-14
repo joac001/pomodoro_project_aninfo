@@ -45,6 +45,13 @@
   margin: 5vh 0 5vh 0;
 }
 
+.pomodoros-till-long-brack {
+  color: #9c9c9c;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+}
+
 .pomodoro-cycle-bar {
   height: 20px;
   border-radius: 20px;
