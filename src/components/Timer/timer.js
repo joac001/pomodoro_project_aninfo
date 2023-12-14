@@ -25,18 +25,18 @@ export default class Timer extends Component {
 
   startTimer = () => {
     if (this.state.isRunning) return;
-  
+
     this.setState({ isRunning: true });
-  
+
     this.timerInterval = setInterval(() => {
       this.setState((prevState) => ({
         time: prevState.time - 1,
       }));
-  
+
       if (this.state.time <= 0) {
         this.stopTimer();
         this.setState({ time: 0 });
-  
+
         if (this.state.mode === 'Pomodoro') {
           // Increment the Pomodoro count after completing a Pomodoro session
           this.setState((prevState) => ({
@@ -57,7 +57,7 @@ export default class Timer extends Component {
                 time: this.props.timer.break * 60,
               });
             }
-  
+
             this.startTimer();
           });
         } else {
@@ -68,11 +68,11 @@ export default class Timer extends Component {
           });
         }
       }
-  
+
     }, 1000);
   };
-  
-  
+
+
 
   restartTimer = () => {
     this.stopTimer();
