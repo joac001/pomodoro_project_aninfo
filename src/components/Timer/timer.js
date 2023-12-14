@@ -42,8 +42,13 @@ export default function Timer(props) {
   function switchMode() {
     if (mode === "Pomodoro") {
       // change to break mode
-      setMode("Break");
-      setTime(props.timer.break * 60);
+      if (((cycles+1) % 4) === 0) {
+        setTime(props.timer.longBreak * 60);
+        setMode("Long Break")
+      } else {
+        setTime(props.timer.break * 60);
+        setMode("Break");
+      }
       setCycles((cycles) => cycles+1);
 
     } else {
@@ -93,15 +98,23 @@ export default function Timer(props) {
         <div>
           <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
             <div
-              style={{
-                width: `${(cycles % 4) * 25}%`,
-                height: '20px',
-                backgroundColor: 'green',
-                transition: 'width 0.5s ease-in-out',
-              }}
+              style={
+                mode === "Long Break" ? {
+                  width: `100%`,
+                  height: '20px',
+                  backgroundColor: 'green',
+                  transition: 'width 0.5s ease-in-out',
+                } : {
+                  width: `${(cycles % 4) * 25}%`,
+                  height: '20px',
+                  backgroundColor: 'green',
+                  transition: 'width 0.5s ease-in-out',
+                }
+            
+            }
             />
           </div>
-          <p>{`${cycles % 4}/4 pomodoros until large break!`}</p>
+          <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
         </div>
       </div>
   );

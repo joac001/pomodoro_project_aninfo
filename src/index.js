@@ -15,7 +15,7 @@ root.render(
 
     <TaskContainer />
 
-    <Timer timer={{ pomodoro: 25, break: 5 }} />
+    <Timer timer={{ pomodoro: 25, break: 5, longBreak: 15 }} />
 
     <AboutSection />
 
