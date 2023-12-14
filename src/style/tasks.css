@@ -1,5 +1,27 @@
-#task-container {
-    margin: 25vh 0 0 5vh;
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgb(59, 59, 59);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #585858;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4b4b4b;
+}
+
+.task-sidebar-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
+
     user-select: none;
 }
 
@@ -38,6 +60,11 @@
     border: 1px solid;
 }
 
+.scrollable-task-list {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
 .card-body {
     display: flex;
     align-items: center;
@@ -47,7 +74,7 @@
     border: 1px solid rgb(46, 44, 44);
     border-radius: 50px;
 
-    width: 75%;
+    width: 95%;
 
     padding: 10px;
     margin-bottom: 10px;
@@ -92,6 +119,8 @@
 .form-check-input:hover {
     box-shadow: 0px 0px 0px 0.25rem rgba(128, 128, 128, 0.25);
     transition-duration: 0.2s;
+
+    cursor: pointer;
 }
 
 .form-check-input:checked:hover {

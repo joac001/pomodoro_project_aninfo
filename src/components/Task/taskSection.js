@@ -2,39 +2,46 @@ import { useState } from "react";
 
 import TaskContainer from './taskContainer.js';
 
-const hamburgerIcon = "\u2630";
+import '../../style/taskSection.css'
 
 export default function TaskSection() {
     const [visibility, setVisibility] = useState('hide');
     const [sidebaropened, setSidebarOpened] = useState(false);
+    const [hover, setHover] = useState('');
 
     return (
-        <div className="sidebar-tasks-container">
-
-            <span className="material-symbols-outlined about-btn"
+        <div className="tasks-sidebar-container">
+            <span className="material-symbols-outlined task-sidebar-btn"
+                onMouseEnter={() => setHover('_open')}
+                onMouseLeave={() => setHover('')}
                 onClick={() => {
                     setVisibility('show');
-                    setSidebarOpened(true)
-                }}>
-                {hamburgerIcon}
+                    setSidebarOpened(true);
+                }
+                }
+            >
+                {'menu' + hover}
             </span>
 
             <div className={"offcanvas offcanvas-start  text-bg-dark " + visibility} data-bs-target="##offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" id="offcanvas" aria-labelledby="offcanvasLabel">
 
                 <div className="offcanvas-header">
-                    <span className="material-symbols-outlined close-offcanvas-btn" onClick={() => { setVisibility('hide') }}>
-                        x
+                    <h5 className="offcanvas-title" id="offcanvasLabel">To do list</h5>
+
+                    <span className="material-symbols-outlined close-offcanvas-btn"
+                        onClick={() => { setVisibility('hide') }}
+                    >
+                        close
                     </span>
 
-                    <h5 className="offcanvas-title" id="offcanvasLabel">To do list</h5>
                 </div>
 
-                <div className="offcanvas-body">
+                <div className="offcanvas-body task-sidebar-content-container">
                     <TaskContainer opened={sidebaropened} />
                 </div>
 
 
             </div>
-        </div>
+        </div >
     );
 }
