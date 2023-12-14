@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import Timer from './components/Timer/timer.js';
 import TaskContainer from './components/Task/taskSection.js';
 import AboutSection from './components/About/aboutSection.js';
+import ClearButton from './components/clearButton/clearButton.js';
 
 import './style/index.css';
 
@@ -19,5 +20,8 @@ root.render(
 
     <AboutSection />
 
+    <span></span>
+    <ClearButton />
+    <span></span>
   </React.StrictMode>
 );

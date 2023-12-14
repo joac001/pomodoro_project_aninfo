@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import '../../style/timer.css';
 
 export default function Timer(props) {
-  // localStorage.clear();
   // check if values are stored, otherwise loads default values
   let [time, setTime] = useState(JSON.parse(localStorage.getItem("time")) || (props.timer.pomodoro * 60));
   let [mode, setMode] = useState(localStorage.getItem("mode") || "Pomodoro");

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import TaskCreator from "./taskCreator.js";
 import TaskList from "./taskList.js";
 
-import '../../style/tasks.css'
+import '../../style/taskSection.css';
 
 export default function TaskContainer() {
     // useState allows updates to the tasks array via setTasks

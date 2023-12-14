@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import TaskContainer from './taskContainer.js';
 
-import '../../style/taskSection.css'
+import '../../style/tasks.css';
 
 export default function TaskSection() {
     const [visibility, setVisibility] = useState('hide');
