@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
+
+import sound from '../../assets/timerEnd.mp3';
 import '../../style/timer.css';
 
 export default function Timer(props) {
@@ -8,6 +11,8 @@ export default function Timer(props) {
   let [cycles, setCycles] = useState(JSON.parse(localStorage.getItem("cycles")) || 0);
 
   let [isRunning, setIsRunning] = useState(false); // always starts paused
+
+  const [playSound] = useSound(sound);
 
   // hook is called whenever variables time or isRunning are updated
   useEffect(() => {
@@ -23,7 +28,7 @@ export default function Timer(props) {
     }
 
     // switches modes when time reaches zero
-    if (time === 0) { switchMode(); }
+    if (time === 0) { playSound(); switchMode(); }
 
     // cleans current interval variable to save memory each repetition
     return () => clearInterval(timerInterval);
@@ -110,8 +115,8 @@ export default function Timer(props) {
 
         <p className='pomodoros-till-long-brack'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
 
-      </div>
 
+      </div>
     </div>
   );
 }
