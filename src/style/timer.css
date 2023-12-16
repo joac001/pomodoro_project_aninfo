@@ -51,9 +51,17 @@
   background-color: rgb(10, 151, 10);
 }
 
-.pomodoros-till-long-brack {
+.pomodoros-till-long-break {
+  visibility: visible;
+
   color: #9c9c9c;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: italic;
   font-weight: bolder;
+}
+
+@media only screen and (max-height: 500px) {
+  .pomodoros-till-long-break {
+    visibility: hidden;
+  }
 }

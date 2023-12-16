@@ -49,9 +49,11 @@ export default function Timer(props) {
       if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
+        pauseTimer();
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
+        pauseTimer();
       }
       setCycles((cycles) => cycles + 1);
 
@@ -59,6 +61,7 @@ export default function Timer(props) {
       // change to pomodoro mode
       setMode("Pomodoro");
       setTime(props.timer.pomodoro * 60);
+      pauseTimer();
     }
   }
 
@@ -120,7 +123,7 @@ export default function Timer(props) {
           />
         </div>
 
-        <p className='pomodoros-till-long-brack'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
+        <p className='pomodoros-till-long-break'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
 
       </div>
     </div>

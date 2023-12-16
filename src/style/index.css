@@ -26,3 +26,9 @@ code {
   justify-content: center;
   flex: 1;
 }
+
+@media only screen and (max-width: 465px) {
+  #root {
+    grid-template-columns: 23% 53% 23%;
+  }
+}
