@@ -9,6 +9,8 @@ export default function Timer(props) {
 
   let [isRunning, setIsRunning] = useState(false); // always starts paused
 
+  let [badgeHover, setBadgeHover] = useState("text-bg-secondary");
+
   // hook is called whenever variables time or isRunning are updated
   useEffect(() => {
     // saves current state in local storage
@@ -41,14 +43,14 @@ export default function Timer(props) {
   function switchMode() {
     if (mode === "Pomodoro") {
       // change to break mode
-      if (((cycles+1) % 4) === 0) {
+      if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
       }
-      setCycles((cycles) => cycles+1);
+      setCycles((cycles) => cycles + 1);
 
     } else {
       // change to pomodoro mode
@@ -75,44 +77,44 @@ export default function Timer(props) {
         {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
       </div>
 
-      <span className="badge text-bg-success pomodoro-counter">
+      <span title='Restart counter cycle' className={"badge " + badgeHover + " pomodoro-counter badge-btn-restarter"} onMouseEnter={() => setBadgeHover("text-bg-success")} onMouseLeave={() => setBadgeHover("text-bg-secondary")}>
         Completed pomodoros: {cycles}
       </span>
-        <div className="timer-buttons">
-          {
-            isRunning
-              ?
-              <button onClick={pauseTimer} type="button" className="btn btn-light">
-                <span className="material-symbols-outlined">pause</span>
-              </button>
-              :
-              <button onClick={playTimer} type="button" className="btn btn-light">
-                <span className="material-symbols-outlined">play_arrow</span>
-              </button>
-          }
-          <button onClick={restartTimer} type="button" className="btn btn-light">
-            <span className="material-symbols-outlined">replay</span>
-          </button>
-        </div>
-        <div>
-          <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
-            <div
-              style={
-                mode === "Long Break" ? {
-                  width: `100%`,
-                  height: '20px',
-                  backgroundColor: 'green',
-                  transition: 'width 0.5s ease-in-out',
-                } : {
-                  width: `${(cycles % 4) * 25}%`,
-                  height: '20px',
-                  backgroundColor: 'green',
-                  transition: 'width 0.5s ease-in-out',
-                }
+      <div className="timer-buttons">
+        {
+          isRunning
+            ?
+            <button onClick={pauseTimer} type="button" className="btn btn-light">
+              <span className="material-symbols-outlined">pause</span>
+            </button>
+            :
+            <button onClick={playTimer} type="button" className="btn btn-light">
+              <span className="material-symbols-outlined">play_arrow</span>
+            </button>
+        }
+        <button onClick={restartTimer} type="button" className="btn btn-light">
+          <span className="material-symbols-outlined">replay</span>
+        </button>
+      </div>
+      <div>
+        <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
+          <div
+            style={
+              mode === "Long Break" ? {
+                width: `100%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
+              } : {
+                width: `${(cycles % 4) * 25}%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
               }
-            />
-          </div>
-          <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
+            }
+          />
+        </div>
+        <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
       </div>
     </div>
   );

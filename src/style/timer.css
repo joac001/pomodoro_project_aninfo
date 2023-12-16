@@ -29,6 +29,11 @@
   margin-bottom: 20px;
 }
 
+.badge-btn-restarter:hover {
+  cursor: pointer;
+  background-color: rgb(9, 163, 9);
+}
+
 .timer-buttons button {
   margin: 5px;
   padding: 1px;
