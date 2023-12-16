@@ -59,6 +59,17 @@ export default function Timer(props) {
     }
   }
 
+  function resetPomodoroCount() {
+    // Display an alert to confirm the reset
+    const isConfirmed = window.confirm("Are you sure you want to reset the pomodoro count?");
+  
+    // If user confirms, reset the count
+    if (isConfirmed) {
+      setCycles(0);
+    }
+  }
+  
+
   // button functions
   function playTimer() { setIsRunning(true); }
 
@@ -77,7 +88,10 @@ export default function Timer(props) {
         {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
       </div>
 
-      <span title='Restart counter cycle' className={"badge " + badgeHover + " pomodoro-counter badge-btn-restarter"} onMouseEnter={() => setBadgeHover("text-bg-success")} onMouseLeave={() => setBadgeHover("text-bg-secondary")}>
+      <span title='Restart counter cycle' className={"badge " + badgeHover + " pomodoro-counter badge-btn-restarter"} 
+      onClick={resetPomodoroCount} 
+      onMouseEnter={() => setBadgeHover("text-bg-success")} 
+      onMouseLeave={() => setBadgeHover("text-bg-secondary")}>
         Completed pomodoros: {cycles}
       </span>
       <div className="timer-buttons">
