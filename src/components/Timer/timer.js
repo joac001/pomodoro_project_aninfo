@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
+
+import sound from '../../assets/timerEnd.mp3';
 import '../../style/timer.css';
 
 export default function Timer(props) {
@@ -8,6 +11,8 @@ export default function Timer(props) {
   let [cycles, setCycles] = useState(JSON.parse(localStorage.getItem("cycles")) || 0);
 
   let [isRunning, setIsRunning] = useState(false); // always starts paused
+
+  const [playSound] = useSound(sound);
 
   // hook is called whenever variables time or isRunning are updated
   useEffect(() => {
@@ -23,7 +28,7 @@ export default function Timer(props) {
     }
 
     // switches modes when time reaches zero
-    if (time === 0) { switchMode(); }
+    if (time === 0) { playSound(); switchMode(); }
 
     // cleans current interval variable to save memory each repetition
     return () => clearInterval(timerInterval);
@@ -41,19 +46,22 @@ export default function Timer(props) {
   function switchMode() {
     if (mode === "Pomodoro") {
       // change to break mode
-      if (((cycles+1) % 4) === 0) {
+      if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
+        pauseTimer();
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
+        pauseTimer();
       }
-      setCycles((cycles) => cycles+1);
+      setCycles((cycles) => cycles + 1);
 
     } else {
       // change to pomodoro mode
       setMode("Pomodoro");
       setTime(props.timer.pomodoro * 60);
+      pauseTimer();
     }
   }
 
@@ -78,41 +86,45 @@ export default function Timer(props) {
       <span className="badge text-bg-success pomodoro-counter">
         Completed pomodoros: {cycles}
       </span>
-        <div className="timer-buttons">
-          {
-            isRunning
-              ?
-              <button onClick={pauseTimer} type="button" className="btn btn-light">
-                <span className="material-symbols-outlined">pause</span>
-              </button>
-              :
-              <button onClick={playTimer} type="button" className="btn btn-light">
-                <span className="material-symbols-outlined">play_arrow</span>
-              </button>
-          }
-          <button onClick={restartTimer} type="button" className="btn btn-light">
-            <span className="material-symbols-outlined">replay</span>
-          </button>
-        </div>
-        <div>
-          <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
-            <div
-              style={
-                mode === "Long Break" ? {
-                  width: `100%`,
-                  height: '20px',
-                  backgroundColor: 'green',
-                  transition: 'width 0.5s ease-in-out',
-                } : {
-                  width: `${(cycles % 4) * 25}%`,
-                  height: '20px',
-                  backgroundColor: 'green',
-                  transition: 'width 0.5s ease-in-out',
-                }
+      <div className="timer-buttons">
+        {
+          isRunning
+            ?
+            <button onClick={pauseTimer} type="button" className="btn btn-light">
+              <span className="material-symbols-outlined">pause</span>
+            </button>
+            :
+            <button onClick={playTimer} type="button" className="btn btn-light">
+              <span className="material-symbols-outlined">play_arrow</span>
+            </button>
+        }
+        <button onClick={restartTimer} type="button" className="btn btn-light">
+          <span className="material-symbols-outlined">replay</span>
+        </button>
+      </div>
+
+      <div>
+        <div className='pomodoro-cycle-bar-container'>
+          <div
+            className='pomodoro-cycle-bar'
+            style={
+              mode === "Long Break" ? {
+                width: `100%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
+              } : {
+                width: `${(cycles % 4) * 25}%`,
+                height: '20px',
+                backgroundColor: 'green',
+                transition: 'width 0.5s ease-in-out',
               }
-            />
-          </div>
-          <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
+            }
+          />
+        </div>
+
+        <p className='pomodoros-till-long-break'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
+
       </div>
     </div>
   );
