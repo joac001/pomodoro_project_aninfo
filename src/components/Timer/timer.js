@@ -73,6 +73,7 @@ export default function Timer(props) {
     // If user confirms, reset the count
     if (isConfirmed) {
       setCycles(0);
+      localStorage.setItem("cycles", "0");
     }
   }
 
