@@ -46,7 +46,7 @@ footer {
 
 a {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 
   margin: 1vh 0 1vh 0;
 
