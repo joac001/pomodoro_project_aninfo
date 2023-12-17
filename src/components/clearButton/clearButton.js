@@ -20,5 +20,5 @@ export default function ClearButton() {
         gotAResponse = false;
     }
 
-    return <button type="button" class="btn btn-danger clear-storage-btn" onClick={() => showWarning()}>Delete saved info</button>;
+    return <button type="button" className="btn btn-danger clear-storage-btn" onClick={() => showWarning()}>Delete saved info</button>;
 }

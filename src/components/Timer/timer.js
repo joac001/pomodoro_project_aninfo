@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
+
+import sound from '../../assets/timerEnd.mp3';
 import '../../style/timer.css';
 
 export default function Timer(props) {
@@ -10,6 +13,7 @@ export default function Timer(props) {
   let [isRunning, setIsRunning] = useState(false); // always starts paused
 
   let [badgeHover, setBadgeHover] = useState("text-bg-secondary");
+  const [playSound] = useSound(sound);
 
   // hook is called whenever variables time or isRunning are updated
   useEffect(() => {
@@ -25,7 +29,7 @@ export default function Timer(props) {
     }
 
     // switches modes when time reaches zero
-    if (time === 0) { switchMode(); }
+    if (time === 0) { playSound(); switchMode(); }
 
     // cleans current interval variable to save memory each repetition
     return () => clearInterval(timerInterval);
@@ -46,9 +50,11 @@ export default function Timer(props) {
       if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
+        pauseTimer();
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
+        pauseTimer();
       }
       setCycles((cycles) => cycles + 1);
 
@@ -56,19 +62,20 @@ export default function Timer(props) {
       // change to pomodoro mode
       setMode("Pomodoro");
       setTime(props.timer.pomodoro * 60);
+      pauseTimer();
     }
   }
 
   function resetPomodoroCount() {
     // Display an alert to confirm the reset
     const isConfirmed = window.confirm("Are you sure you want to reset the pomodoro count?");
-  
+
     // If user confirms, reset the count
     if (isConfirmed) {
       setCycles(0);
     }
   }
-  
+
 
   // button functions
   function playTimer() { setIsRunning(true); }
@@ -88,10 +95,10 @@ export default function Timer(props) {
         {Math.floor(time / 60)}:{(time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}
       </div>
 
-      <span title='Restart counter cycle' className={"badge " + badgeHover + " pomodoro-counter badge-btn-restarter"} 
-      onClick={resetPomodoroCount} 
-      onMouseEnter={() => setBadgeHover("text-bg-success")} 
-      onMouseLeave={() => setBadgeHover("text-bg-secondary")}>
+      <span title='Restart counter cycle' className={"badge " + badgeHover + " pomodoro-counter badge-btn-restarter"}
+        onClick={resetPomodoroCount}
+        onMouseEnter={() => setBadgeHover("text-bg-success")}
+        onMouseLeave={() => setBadgeHover("text-bg-secondary")}>
         Completed pomodoros: {cycles}
       </span>
       <div className="timer-buttons">
@@ -110,9 +117,12 @@ export default function Timer(props) {
           <span className="material-symbols-outlined">replay</span>
         </button>
       </div>
+
+
       <div>
-        <div style={{ width: '100%', border: '1px solid #ccc', marginTop: '10px' }}>
+        <div className='pomodoro-cycle-bar-container'>
           <div
+            className='pomodoro-cycle-bar'
             style={
               mode === "Long Break" ? {
                 width: `100%`,
@@ -128,8 +138,8 @@ export default function Timer(props) {
             }
           />
         </div>
-        <p>{mode === "Long Break" ? 'Break time!' : `${cycles % 4}/4 pomodoros until large break!`}</p>
-      </div>
-    </div>
+        <p className='pomodoros-till-long-break'>{`${cycles % 4}/4 pomodoros until long break!`}</p>
+      </div >
+    </div >
   );
 }
