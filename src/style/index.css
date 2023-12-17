@@ -21,14 +21,56 @@ code {
   display: grid;
 
   grid-template-columns: repeat(3, 33.33%);
-  grid-template-rows: 80vh 7vh;
+  grid-template-rows: 75vh 7vh 5vh;
+  row-gap: 2vh;
 
   justify-content: center;
   flex: 1;
 }
 
-@media only screen and (max-width: 465px) {
+footer {
+  display: flex;
+  justify-content: space-evenly;
+
+  width: 100%;
+
+  background-color: #252525;
+  border-radius: 20px;
+}
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  gap: 2vh;
+}
+
+a {
+  display: flex;
+  align-items: start;
+
+  margin: 1vh 0 1vh 0;
+
+  text-decoration: none;
+  color: #d3d3d3;
+  font-size: small;
+}
+
+a:hover {
+  color: white;
+}
+
+@media only screen and (max-width: 1024px) {
   #root {
-    grid-template-columns: 23% 53% 23%;
+    grid-template-columns: 13% 73% 13%;
+  }
+
+  .links-container {
+    gap: 1vh;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  footer {
+    background-color: transparent;
   }
 }
