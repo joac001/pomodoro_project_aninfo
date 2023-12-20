@@ -27,6 +27,11 @@ npm -v
 
 *This command should just display the version you have currently installed.*
 
+Next, you will have to clone the project with the next line:
+
+```shell
+git clone git@github.com:joac001/pomodoro_project_aninfo.git
+```
 
 Next, enter the project folder and run:
 
