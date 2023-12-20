@@ -74,6 +74,8 @@ export default function Timer(props) {
     if (isConfirmed) {
       setCycles(0);
       localStorage.setItem("cycles", "0");
+      setMode("Pomodoro");
+      setTime(props.timer.pomodoro * 60);
     }
   }
 
