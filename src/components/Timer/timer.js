@@ -25,7 +25,7 @@ export default function Timer(props) {
     if (isRunning && time > 0) {
       timerInterval = setInterval(() => {
         setTime((time) => time - 1);
-      }, 1000);
+      }, 1);
     }
 
     // switches modes when time reaches zero
@@ -50,9 +50,11 @@ export default function Timer(props) {
       if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
+        pauseTimer();
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
+        pauseTimer();
       }
       setCycles((cycles) => cycles + 1);
 
@@ -72,6 +74,8 @@ export default function Timer(props) {
     if (isConfirmed) {
       setCycles(0);
       localStorage.setItem("cycles", "0");
+      setMode("Pomodoro");
+      setTime(props.timer.pomodoro * 60);
     }
   }
 
