@@ -25,7 +25,7 @@ export default function Timer(props) {
     if (isRunning && time > 0) {
       timerInterval = setInterval(() => {
         setTime((time) => time - 1);
-      }, 1);
+      }, 1000);
     }
 
     // switches modes when time reaches zero
