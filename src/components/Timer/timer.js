@@ -117,6 +117,9 @@ export default function Timer(props) {
         <button onClick={restartTimer} type="button" className="btn btn-light">
           <span className="material-symbols-outlined">replay</span>
         </button>
+        <button onClick={switchMode} type="button" className="btn btn-light">
+          <span className="material-symbols-outlined">stop</span>
+        </button>
       </div>
 
 
