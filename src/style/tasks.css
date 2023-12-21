@@ -132,3 +132,15 @@
     color: dimgray;
     text-decoration: line-through;
 }
+
+.form-check-label {
+    max-width: 200px;
+
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
