@@ -50,9 +50,11 @@ export default function Timer(props) {
       if (((cycles + 1) % 4) === 0) {
         setTime(props.timer.longBreak * 60);
         setMode("Long Break")
+        pauseTimer();
       } else {
         setTime(props.timer.break * 60);
         setMode("Break");
+        pauseTimer();
       }
       setCycles((cycles) => cycles + 1);
 
