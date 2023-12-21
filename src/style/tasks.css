@@ -62,7 +62,7 @@
 
 .scrollable-task-list {
     overflow-y: auto;
-    max-height: 400px;
+    max-height: calc(100vh - 62px - 5vh - 40px - 85px);
 }
 
 .card-body {
